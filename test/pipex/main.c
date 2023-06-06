@@ -33,9 +33,11 @@ int main(int ac, char **av, char **env)
     child = fork();
     if (child == 0)
     {
+            printf("bonjour\n");  
+
         execve("/usr/bin/ls", arg, env);
     }
     
-    waitpid(child, NULL, 0);
-    printf("bonjour\n");  
+    // waitpid(child, NULL, 0);
+    // printf("bonjour\n");  
 }
