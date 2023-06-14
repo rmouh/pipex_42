@@ -30,6 +30,30 @@ char	*ft_strjoinn(char const *s1, char const *s2)
 	str[ls1 + ls2] = '\0';
 	return (str);
 }
+
+char	*ft_strjoine(char const *s1, char const *s2)
+{
+	int		i;
+	int		j;
+	char	*res;
+
+	if (!s1 || !s2)
+		return (NULL);
+	res = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2)) + 2);
+	if (!res || !s1 || !s2)
+		return (NULL);
+	i = 0;
+	j = -1;
+	while (s1[++j])
+		res[j] = s1[j];
+	i = 0;
+	res[j++] = '/';
+	while (s2[i])
+		res[j++] = s2[i++];
+	res[j] = '\0';
+	return (res);
+}
+
 /*
 #include <string.h>
 #include <stdio.h>

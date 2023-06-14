@@ -12,19 +12,23 @@
 
 #include "libft.h"
 
-int	ft_strncmp(char *s1, char *s2)
-{
-	char	*p1;
-	char	*p2;
 
-	p1 = s1;
-	p2 = s2;
-	while (*p1 || *p2)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
+{
+	size_t			i;
+	unsigned char	*st1;
+	unsigned char	*st2;
+
+	i = 0;
+	st1 = (unsigned char *)s1;
+	st2 = (unsigned char *)s2;
+	while ((i < n) && (st2[i] || st1[i]))
 	{
-		if (*p1++ != *p2++)
-			return (0);
+		if (st1[i] != st2[i])
+			return (st1[i] - st2[i]);
+		i++;
 	}
-	return (1);
+	return (0);
 }
 /*
 #include <string.h>

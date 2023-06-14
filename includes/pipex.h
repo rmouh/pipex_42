@@ -10,6 +10,12 @@
 # include <sys/wait.h>
 # include <unistd.h>
 
+// typedef struct		s_cmd
+// {
+// 	char				*cmd;
+// 	char				**args;
+// }                       t_cmd;
+
 typedef struct  s_data
 {
     char    **paths;
@@ -24,16 +30,17 @@ typedef struct  s_data
     char    *out_file;
 }               t_data;
 
+
 //parsing fonctions
-void    find_paths_and_store(t_data   *data, char **env, int argc);
+char **find_paths_and_store(char **env);
 void    store_cmds(t_data *data, int argc, char *argv[]);
 
 //open fonctions
 void    open_failed(t_data *data, int first);
-int     my_open(int nb, t_data *data);
+void my_open(int nb, t_data *data);
 void    open_worked(int nb, t_data *data, int opn);
 
 //execve fonctions
-void    my_exec(t_data *data, char *curr_cmd, int nb);
+void    my_exec(t_data *data, char *curr_cmd);
 
 #endif

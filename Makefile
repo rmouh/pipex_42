@@ -6,7 +6,7 @@
 #    By: rmouhoub <rmouhoub@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/24 18:05:45 by rmouhoub          #+#    #+#              #
-#    Updated: 2023/05/27 14:25:16 by rmouhoub         ###   ########.fr        #
+#    Updated: 2023/06/14 20:54:58 by rmouhoub         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,7 @@ $(DIR_OBJS):
 	mkdir -p objs/parsing
 	
 $(DIR_OBJS)/%.o: $(DIR_SRCS)/%.c | $(DIR_OBJS)
-	$(CC)  -c $< -o $@ $(HEAD)
+	$(CC) $(CFLAGS) -c $< -o $@ $(HEAD)
 
 
 

@@ -14,7 +14,7 @@
 
 int	ft_putchar(char c)
 {
-	return (write(1, &c, 1));
+	return (write(2, &c, 1));
 }
 
 int	ft_putnbr(unsigned long nb, unsigned long base, int up_do, int *counter)
@@ -29,7 +29,7 @@ int	ft_putstr(char *c)
 	int	counter;
 
 	if (!c)
-		return (write(1, "(null)", 6));
+		return (write(2, "(null)", 6));
 	counter = 0;
 	while (*c)
 		counter += ft_putchar(*c++);
