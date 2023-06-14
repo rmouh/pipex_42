@@ -28,6 +28,7 @@ typedef struct  s_data
     __pid_t *pids;
     char    *in_file;
     char    *out_file;
+    int     here_doc;
 }               t_data;
 
 

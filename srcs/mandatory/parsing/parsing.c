@@ -112,6 +112,33 @@ char **find_paths_and_store(char **env)
 	return (NULL);
 }
 
+void	here_doc(t_data *data, char *deli)
+{
+	int fd;
+	char *str;
+	char *delim = ft_strjoinn(deli, "\n");
+	fd = open("/tmp/here_doc", O_CREAT | O_RDWR, 0666);
+	if (fd == -1)
+		exit(1);
+	while (1)
+	{
+		str = get_next_line(0, 0);
+		if (!str)
+			break ;
+		ft_putstr_fd(str, fd);
+		if (!ft_strncmp(delim, str, ft_strlen(delim)))
+			break ;
+		free(str);
+	}
+	free(str);
+	free(delim);
+	get_next_line(1, 1);
+	close(fd);
+	data->in_file= "/tmp/here_doc";
+	data->here_doc = 1;
+	data->cmd_size -= 1;
+}
+
 int	main(int argc, char *argv[], char **env)
 {
 	static t_data	data = {0};
@@ -125,6 +152,8 @@ int	main(int argc, char *argv[], char **env)
     data.prev = -1;
 	data.in_file = argv[1];
 	data.out_file = argv[argc - 1];
+	if (!ft_strncmp("here_doc", argv[1], ft_strlen("here_doc")))
+		here_doc(&data, argv[2]);
     data.pids = malloc(sizeof(__pid_t) * data.cmd_size);
 	while (nb < data.cmd_size)
 	{                          //liree de 0 ecrire 1
@@ -135,7 +164,7 @@ int	main(int argc, char *argv[], char **env)
             free(data.pids);
 			my_open(nb, &data);
 			// store_cmds(&data, argc, argv);
-		    data.cmds = ft_split(argv[nb + 2], ' ');
+		    data.cmds = ft_split(argv[nb + 2 + data.here_doc], ' ');
 			if (!data.cmds)
 				exit(1);
 			my_exec(&data, data.cmds[0]);
@@ -155,7 +184,6 @@ int	main(int argc, char *argv[], char **env)
     for (int i = 0; i < data.cmd_size; i++)
         waitpid(data.pids[i], 0, 0);
     free(data.pids);
-	printf("done\n");
 }
 
 // ft_printf("%ld\n", ft_strlenn(&data->paths));
