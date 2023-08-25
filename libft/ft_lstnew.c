@@ -29,10 +29,11 @@ void	printll(t_list *chaine)
 {
 	while (chaine != NULL)
 	{
-		ft_printf("[%d] --> %s\n ", chaine->index,(chaine->content));
+		ft_printf("[%d] --> %s\n ", chaine->index, (chaine->content));
 		chaine = chaine->next;
 	}
 }
+
 /*
 #include <stdio.h>
 int main(void)

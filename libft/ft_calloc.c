@@ -26,7 +26,6 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	return (buf);
 }
 
-
 t_list	*ft_callloc(int nmemb)
 {
 	t_list	*buf;

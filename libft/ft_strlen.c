@@ -19,8 +19,8 @@ size_t	ft_strlenn(char **s)
 	len = 0;
 	while (*s++)
 	{
-        len++;
-    }
+		len++;
+	}
 	return (len);
 }
 
@@ -31,7 +31,7 @@ size_t	ft_strlentab(char **s)
 	len = 0;
 	while (*s++)
 	{
-        len++;
-    }
+		len++;
+	}
 	return (len);
 }

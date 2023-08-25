@@ -6,7 +6,7 @@
 #    By: rmouhoub <rmouhoub@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/24 18:05:45 by rmouhoub          #+#    #+#              #
-#    Updated: 2023/06/14 20:54:58 by rmouhoub         ###   ########.fr        #
+#    Updated: 2023/08/21 13:45:40 by rmouhoub         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,9 @@ DIR_PARSING		=	parsing
 
 
 SRCS_NAMES 		= 	$(DIR_PARSING)/parsing.c \
+					$(DIR_PARSING)/init.c \
+					$(DIR_PARSING)/open_utils.c \
+					$(DIR_PARSING)/exec_utils.c \
 					
 
 OBJS_NAMES		=	${SRCS_NAMES:.c=.o}
@@ -45,6 +48,9 @@ $(NAME): $(OBJS)
 $(DIR_OBJS):
 	mkdir -p $(DIR_OBJS)
 	mkdir -p objs/parsing
+	mkdir -p objs/init
+	mkdir -p objs/open_utils
+	mkdir -p objs/exec_utils
 	
 $(DIR_OBJS)/%.o: $(DIR_SRCS)/%.c | $(DIR_OBJS)
 	$(CC) $(CFLAGS) -c $< -o $@ $(HEAD)

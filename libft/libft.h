@@ -89,7 +89,7 @@ void				ft_putchar_fd(char c, int fd);
 void				ft_putstr_fd(char *s, int fd);
 void				ft_putendl_fd(char *s, int fd);
 void				ft_putnbr_fd(int n, int fd);
-char	*ft_strjoine(char const *s1, char const *s2);
+char				*ft_strjoine(char const *s1, char const *s2);
 
 /*
 ** Part 3 - Bonus
@@ -113,7 +113,6 @@ int					ft_lstsize(t_list *lst);
 void				ft_lstiter(t_list *lst, void (*f)(char *));
 t_list				*ft_lstlast_free(t_list *lst);
 void				printll(t_list *chaine);
-
 
 /*
 ** printf
